@@ -41,7 +41,7 @@
             this.panel1.MaximumSize = new System.Drawing.Size(800, 0);
             this.panel1.MinimumSize = new System.Drawing.Size(725, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(725, 0);
+            this.panel1.Size = new System.Drawing.Size(725, 10);
             this.panel1.TabIndex = 0;
             // 
             // Form2
