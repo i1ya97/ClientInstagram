@@ -21,13 +21,6 @@ namespace ClientInstagram
             InitializeComponent();
         }
 
-
-        void HtmlTest(string html)
-        {
-            File.WriteAllText("a.txt",html);
-            Process.Start("a.txt");
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string url = "https://api.instagram.com/oauth/authorize/?client_id=88d0cc91027b45c1aefaf5e1df39b070&redirect_uri=http://localhost:80/&response_type=token";
@@ -38,7 +31,6 @@ namespace ClientInstagram
         {
             if (e.Url.ToString().IndexOf("access_token") != -1)
             {
-                int userId = 0;
                 string accessToken = "";
                 Regex myReg = new Regex(@"(?<name>[\w\d\x5f]+)=(?<value>[^\x26\s]+)", RegexOptions.IgnoreCase | RegexOptions.Singleline);
                 foreach (Match m in myReg.Matches(e.Url.ToString()))
@@ -47,16 +39,17 @@ namespace ClientInstagram
                     {
                         accessToken = m.Groups["value"].Value;
                     }
-                    else if (m.Groups["name"].Value == "user_id")
-                    {
-                        userId = Convert.ToInt32(m.Groups["value"].Value);
-                    }
                 }
-                MessageBox.Show(String.Format("Ключ доступа: {0}\nUserID: {1}", accessToken, userId));
-                Form ifrm = new Form2();
-                ifrm.Show(); // отображаем Form2
+                Form ifrm = new Form2(accessToken);
+                ifrm.Show();
                 this.Hide();
             }
+
         }
+        public void logout()
+        {
+            string url = "https://www.instagram.com/accounts/logout";
+            webBrowser1.Navigate(url);
+        } 
     }
 }
