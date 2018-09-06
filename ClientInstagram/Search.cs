@@ -26,7 +26,7 @@ namespace ClientInstagram
         {
             string next_url = "https://api.instagram.com/v1/tags/"+textBox1.Text+"/media/recent?access_token=" + token;
             int x = 0, y = 240;
-            /*do
+            do
             {
                 var webClient = new WebClient();
                 webClient.QueryString.Add("format", "json");
@@ -58,7 +58,7 @@ namespace ClientInstagram
                     x += 240;
                 }
                 y += 240;
-            } while (next_url != null);*/
+            } while (next_url != null);
         }
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
